@@ -41,7 +41,7 @@
 {% endfor %}
 
 
-    {% if game_started %}
+    {% if game_started and not game_finished %}
 
         <h2>Current Player, {{ current_player }}</h2>
 
@@ -61,8 +61,14 @@
                 Submit Line
             </button>
         </form>
-
+    
+    {% endif %}
+    
+    {% if game_finished %}
+        <h2>Final Poem</h2>
+    {% else %}
         <h2>Current Poem</h2>
+    {% endif %}
 
 <ul>
 
@@ -74,7 +80,6 @@
 
 </ul>
 
-    {% endif %}
 
 
 </ul>

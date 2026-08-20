@@ -7,6 +7,7 @@ players = []
 poem = []
 players_remaining = []
 game_started = False
+game_finished = False
 current_player = None
 
 
@@ -16,7 +17,8 @@ def home():
         "index.html",
         players=players,
         game_started=game_started,
-        current_player=current_player
+        current_player=current_player,
+        game_finished=game_finished
     )
 
 
@@ -31,7 +33,7 @@ def join():
         "index.html",
         players=players,
         game_started=game_started,
-
+        game_finished=game_finished
     )
 
 
@@ -54,17 +56,26 @@ def start():
         players=players,
         game_started=game_started,
         current_player=current_player,
-        poem=poem
+        poem=poem,
+        game_finished=game_finished
     )
 
 @app.route("/submit_line", methods=["POST"])
 def submit_line():
 
-    global current_player
+    global current_player, game_finished
 
     line = request.form["poemLine"]
 
     poem.append(line)
+
+    if players_remaining:
+        current_player = random.choice(players_remaining)
+        players_remaining.remove(current_player)
+
+    else:
+        game_finished = True
+        current_player = None
 
     return render_template(
         "index.html",
@@ -72,7 +83,8 @@ def submit_line():
         players_remaining=players_remaining,
         poem=poem,
         current_player=current_player,
-        game_started=game_started
+        game_started=game_started,
+        game_finished=game_finished
     )
 
 
