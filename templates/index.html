@@ -23,7 +23,7 @@
     {% endif %}
 
     <h2>Players</h2>
-
+    <ul>
     {% if not game_started %}
     <form action="/start" method="POST">
         <button type="submit">
@@ -31,7 +31,7 @@
         </button>
     </form>
     {% endif %}
-
+    </ul>
 <ul>
 
 {% for player in players %}
@@ -43,11 +43,39 @@
 
     {% if game_started %}
 
-        <h2>Current Player</h2>
+        <h2>Current Player, {{ current_player }}</h2>
 
-        <p>{{ current_player }}</p>
+        <p>{{ current_player }}, it's your turn. Please type your line of poetry here:</p>
+
+        <form action="/submit_line" method="POST">
+            <label for="poemLine">
+                Write the next line of the poem:
+            </label>
+            <br><br>
+            <input
+                type="text"
+                id="poemLine"
+                name="poemLine"
+                required>
+            <button type="submit">
+                Submit Line
+            </button>
+        </form>
+
+        <h2>Current Poem</h2>
+
+<ul>
+
+{% for line in poem %}
+
+    <li>{{ line }}</li>
+
+{% endfor %}
+
+</ul>
 
     {% endif %}
+
 
 </ul>
     <p>Testing for now.</p>

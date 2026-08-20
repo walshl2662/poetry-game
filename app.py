@@ -30,7 +30,8 @@ def join():
     return render_template(
         "index.html",
         players=players,
-        game_started=game_started
+        game_started=game_started,
+
     )
 
 
@@ -44,15 +45,34 @@ def start():
     current_player=random.choice(players_remaining)
     players_remaining.remove(current_player) 
 
-    print(players)
-    print(players_remaining)
-    print(current_player)
+    print("Players:", players)
+    print("Players Remaining:", players_remaining)
+    print("Current Player:", current_player)
 
     return render_template(
         "index.html",
         players=players,
         game_started=game_started,
-        current_player=current_player
+        current_player=current_player,
+        poem=poem
+    )
+
+@app.route("/submit_line", methods=["POST"])
+def submit_line():
+
+    global current_player
+
+    line = request.form["poemLine"]
+
+    poem.append(line)
+
+    return render_template(
+        "index.html",
+        players=players,
+        players_remaining=players_remaining,
+        poem=poem,
+        current_player=current_player,
+        game_started=game_started
     )
 
 
