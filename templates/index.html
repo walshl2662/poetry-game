@@ -9,6 +9,28 @@
 
     <h1>Poetry Game</h1>
 
+    <form action="/join" method="POST">
+        <label for="playerName">Please enter your nickanme:</label>
+        <input 
+            type="text"
+            id="playerName"
+            name="playerName"
+            required>
+        <button type="submit">
+            Join Game
+        </button>
+    </form>
+    <h2>Players</h2>
+
+<ul>
+
+{% for player in players %}
+
+    <li>{{ player }}</li>
+
+{% endfor %}
+
+</ul>
     <p>Testing for now.</p>
 
 </body>
