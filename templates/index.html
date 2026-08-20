@@ -8,7 +8,7 @@
 <body>
 
     <h1>Poetry Game</h1>
-
+    {% if not game_started %}
     <form action="/join" method="POST">
         <label for="playerName">Please enter your nickanme:</label>
         <input 
@@ -20,7 +20,17 @@
             Join Game
         </button>
     </form>
+    {% endif %}
+
     <h2>Players</h2>
+
+    {% if not game_started %}
+    <form action="/start" method="POST">
+        <button type="submit">
+            Start Game
+        </button>
+    </form>
+    {% endif %}
 
 <ul>
 
@@ -29,6 +39,15 @@
     <li>{{ player }}</li>
 
 {% endfor %}
+
+
+    {% if game_started %}
+
+        <h2>Current Player</h2>
+
+        <p>{{ current_player }}</p>
+
+    {% endif %}
 
 </ul>
     <p>Testing for now.</p>
