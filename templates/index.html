@@ -66,6 +66,14 @@
     
     {% if game_finished %}
         <h2>Final Poem</h2>
+            <form action="/new_game" method="POST">
+
+            <button type="submit">
+                 Play Again
+            </button>
+
+            </form>
+
     {% else %}
         <h2>Current Poem</h2>
     {% endif %}

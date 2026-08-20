@@ -87,6 +87,33 @@ def submit_line():
         game_finished=game_finished
     )
 
+@app.route("/new_game", methods=["POST"])
+def new_game():
+
+    global players
+    global players_remaining
+    global poem
+    global current_player
+    global game_started
+    global game_finished
+
+    players = []
+    players_remaining = []
+    poem = []
+    current_player = None
+    game_started = False
+    game_finished = False
+
+    return render_template(
+        "index.html",
+        players=players,
+        players_remaining=players_remaining,
+        poem=poem,
+        current_player=current_player,
+        game_started=game_started,
+        game_finished=game_finished
+    )
+
 
 if __name__ == "__main__":
     app.run(debug=True)
