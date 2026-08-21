@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poetry Game</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
+<div class=""container">
     <h1>Poetry Game</h1>
     {% if not game_started %}
     <form action="/join" method="POST">
@@ -22,8 +24,18 @@
     </form>
     {% endif %}
 
+ {% if not game_started %}
+
     <h2>Players</h2>
-    <ul>
+
+        <ul>
+            {% for player in players %}
+            <li>{{ player }}</li>
+            {% endfor %}
+        </ul>
+
+{% endif %}
+
     {% if not game_started %}
     <form action="/start" method="POST">
         <button type="submit">
@@ -34,12 +46,6 @@
     </ul>
 <ul>
 
-{% for player in players %}
-
-    <li>{{ player }}</li>
-
-{% endfor %}
-
 
     {% if game_started and not game_finished %}
 
@@ -48,9 +54,6 @@
         <p>{{ current_player }}, it's your turn. Please type your line of poetry here:</p>
 
         <form action="/submit_line" method="POST">
-            <label for="poemLine">
-                Write the next line of the poem:
-            </label>
             <br><br>
             <input
                 type="text"
@@ -78,20 +81,31 @@
         <h2>Current Poem</h2>
     {% endif %}
 
-<ul>
+<div class="poem">
 
 {% for line in poem %}
 
-    <li>{{ line }}</li>
+    <p>{{ line }}</p>
 
 {% endfor %}
 
+</div>
+
+{% if game_started %}
+
+<h2>Players</h2>
+
+<ul>
+{% for player in players %}
+    <li>{{ player }}</li>
+{% endfor %}
 </ul>
 
-
+{% endif %}
 
 </ul>
     <p>Testing for now.</p>
 
+</div>
 </body>
 </html>
