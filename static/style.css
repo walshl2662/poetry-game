@@ -26,6 +26,14 @@ body {
     font-style: italic;
 }
 
+.message {
+    background: #ffe6e6;
+    color: #a40000;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
 h1 {
     text-align: center;
 }
@@ -45,6 +53,7 @@ input[type="text"] {
 }
 
 button {
+    transition: background-color 0.2s ease;
     background-color: #3b82f6;
     color: white;
     border: none;

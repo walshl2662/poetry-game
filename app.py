@@ -19,7 +19,7 @@ def home():
         game_started=game_started,
         current_player=current_player,
         game_finished=game_finished,
-        message=message
+        message=""
     )
 
 
@@ -33,8 +33,8 @@ def join():
     if len(players) >= 10:
         message = "Maximum of 10 players allowed."
 
-    elif player_name in players:
-        message = "That nickname is already in use."
+    elif player_name in players: # forbids duplicate nicknames
+        message = "That nickname is already in use. Please choose another one"
 
     else:
         players.append(player_name)
