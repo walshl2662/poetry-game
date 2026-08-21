@@ -30,7 +30,15 @@ The assignment brief was as follows:
 ## How to Run
 
 1. Clone the repository.
+
+    git clone https://github.com/walshl2662/poetry-game.git
+
 2. Create and activate a cirtual environment.
+
+    cd poetry-game
+    python3 -m venv venv
+    source venv/bin/activate
+
 3. Install Flask:
 
     pip install flask

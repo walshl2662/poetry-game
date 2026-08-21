@@ -65,7 +65,6 @@
         <p>{{ current_player }}, it's your turn. Please type your line of poetry here:</p>
 
         <form action="/submit_line" method="POST">
-            <br><br>
             <input
                 type="text"
                 id="poemLine"
@@ -80,13 +79,6 @@
     
     {% if game_finished %}
         <h2>Final Poem</h2>
-            <form action="/new_game" method="POST">
-
-            <button type="submit">
-                 Play Again
-            </button>
-
-            </form>
 
     {% else %}
         <h2>Current Poem</h2>
@@ -101,6 +93,15 @@
 {% endfor %}
 
 </div>
+
+{% if game_finished %}
+    <br><br>
+    <form action="/new_game" method="POST">
+        <button type="submit">
+            Play Again
+         </button>
+    </form>
+{% endif %}
 
 {% if game_started %}
 
