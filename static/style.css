@@ -5,6 +5,18 @@ body {
     padding: 40px;
 }
 
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
 .container {
     max-width: 700px;
     margin: auto;
@@ -72,4 +84,24 @@ ul {
 
 li {
     margin-bottom: 8px;
+}
+
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+body.dark-mode .container {
+    background-color: #2d2d2d;
+}
+
+body.dark-mode input {
+    background-color: #444;
+    color: white;
+    border: 1px solid #666;
+}
+
+body.dark-mode .poem {
+    background-color: #383838;
+    border-left: 4px solid #6aa9ff;
 }
