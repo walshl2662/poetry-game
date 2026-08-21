@@ -18,7 +18,8 @@ def home():
         players=players,
         game_started=game_started,
         current_player=current_player,
-        game_finished=game_finished
+        game_finished=game_finished,
+        message=message
     )
 
 
@@ -27,13 +28,23 @@ def join():
 
     player_name = request.form["playerName"]
 
-    players.append(player_name)
+    message = ""
+
+    if len(players) >= 10:
+        message = "Maximum of 10 players allowed."
+
+    elif player_name in players:
+        message = "That nickname is already in use."
+
+    else:
+        players.append(player_name)
 
     return render_template(
         "index.html",
         players=players,
         game_started=game_started,
-        game_finished=game_finished
+        game_finished=game_finished,
+        message=message
     )
 
 
